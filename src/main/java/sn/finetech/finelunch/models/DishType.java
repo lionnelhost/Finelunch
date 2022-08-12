@@ -16,7 +16,7 @@ public class DishType {
 
     private String description;
 
-    private LocalDate crate_at;
+    private LocalDate created_at;
 
     private LocalDate  updated_at;
 
@@ -26,10 +26,10 @@ public class DishType {
 
     public DishType() {}
 
-    public DishType(String name, String description, LocalDate crate_at, LocalDate updated_at) {
+    public DishType(String name, String description, LocalDate created_at, LocalDate updated_at) {
         this.name = name;
         this.description = description;
-        this.crate_at = crate_at;
+        this.created_at = created_at;
         this.updated_at = updated_at;
     }
 
@@ -57,12 +57,12 @@ public class DishType {
         this.description = description;
     }
 
-    public LocalDate getCrate_at() {
-        return crate_at;
+    public LocalDate getCreated_at() {
+        return created_at;
     }
 
-    public void setCrate_at(LocalDate crate_at) {
-        this.crate_at = crate_at;
+    public void setCreated_at(LocalDate created_at) {
+        this.created_at = created_at;
     }
 
     public LocalDate getUpdated_at() {
