@@ -2,11 +2,11 @@ package sn.finetech.finelunch.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Table(name = "dish_type")
-public class DishType {
+@Table(name = "dishes")
+public class Dish {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,21 +14,36 @@ public class DishType {
 
     private String name;
 
-    private String description;
+    private  String description;
+
+    private Integer price;
+
+    private String image;
 
     private LocalDate crate_at;
 
     private LocalDate  updated_at;
 
-    @OneToMany(mappedBy = "dish_type", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Dish> dishes;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dish_type_id")
+    private DishType dish_type;
+
+    public DishType get_dish_type() {
+        return dish_type;
+    }
+
+    public void set_dish_type(DishType dish_type) {
+        this.dish_type = dish_type;
+    }
+
+    public Dish() {}
 
 
-    public DishType() {}
-
-    public DishType(String name, String description, LocalDate crate_at, LocalDate updated_at) {
+    public Dish(String name, String description, Integer price, String image, LocalDate crate_at, LocalDate updated_at) {
         this.name = name;
         this.description = description;
+        this.price = price;
+        this.image = image;
         this.crate_at = crate_at;
         this.updated_at = updated_at;
     }
@@ -55,6 +70,22 @@ public class DishType {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public LocalDate getCrate_at() {
